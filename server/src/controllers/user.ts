@@ -12,9 +12,11 @@ export const createUser = async (req, res) => {
       },
     });
     const token = generateToken(user);
+    console.log("working...");
     res.json({ token });
   } catch (error) {
     res.status(500).json({ error: error.message });
+    console.error(error);
   }
 };
 

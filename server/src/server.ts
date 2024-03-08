@@ -14,14 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", protect, router);
-app.post(
-  "/register",
-  body("email").isString(),
-  body("password").isString(),
-  body("name").optional(),
-  errorHandler,
-  createUser
-);
+app.post("/register", createUser);
 app.post(
   "/signin",
   body("email").isString(),
