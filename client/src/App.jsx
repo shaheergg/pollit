@@ -1,17 +1,21 @@
 import "./App.css";
-import { Button } from "./components/ui/button";
+import { Routes, Route } from "react-router-dom";
+import { Private } from "./routes/Private";
+import Dashboard from "./pages/Dashboard";
+import { Public } from "./routes/Public";
+import Login from "./pages/Login";
 function App() {
   return (
     <>
-      <div className="flex items-center gap-4 p-4">
-        <Button
-          variant={"default"}
-          onClick={() => {
-            alert("Hello");
-          }}
-        >
-          Enroll in the following course
-        </Button>
+      <div>
+        <Routes>
+          <Route path="/" element={<Private />}>
+            <Route path="dashboard" element={<Dashboard />} />
+          </Route>
+          <Route path="/" element={<Public />}>
+            <Route path="login" element={<Login />} />
+          </Route>
+        </Routes>
       </div>
     </>
   );
