@@ -9,12 +9,25 @@ import {
 } from "./ui/card";
 import { Button } from "./ui/button";
 import { CheckCircledIcon, CircleIcon } from "@radix-ui/react-icons";
+import { useVoteStore } from "@/store/vote";
+import { toast } from "sonner";
+import { authStore } from "@/store/auth";
 
 const Poll = ({ poll }) => {
   const [selected, setSelected] = useState("");
+  const castVote = useVoteStore((state) => state.castVote);
+  const token = authStore((state) => state.token);
   const formatDate = (date) => {
     const d = new Date(date);
     return d.toDateString();
+  };
+  const submitVote = () => {
+    if (!selected) {
+      toast("Please select an option", {
+        type: "error",
+      });
+    }
+    castVote(selected, token);
   };
   return (
     <Card>
@@ -53,7 +66,9 @@ const Poll = ({ poll }) => {
         })}
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Vote</Button>
+        <Button onClick={submitVote} disabled={!selected} className="w-full">
+          Vote
+        </Button>
       </CardFooter>
     </Card>
   );
