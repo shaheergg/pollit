@@ -35,3 +35,17 @@ export const signIn = async (req, res) => {
   const token = generateToken(user);
   res.json({ token });
 };
+
+export const getUser = async (req, res) => {
+  const user = await db.user.findUnique({
+    where: {
+      id: req.user.id,
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+    },
+  });
+  res.json(user);
+};

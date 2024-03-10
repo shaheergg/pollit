@@ -1,10 +1,11 @@
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import axios from "axios";
 export function cn(...inputs) {
   return twMerge(clsx(inputs));
 }
 
-export const client = axios.create({
-  baseURL: "http://localhost:3000",
-});
+export const validateEmail = (email) => {
+  const trimmedemail = email.trim();
+  const re = /\S+@\S+\.\S+/;
+  return re.test(trimmedemail);
+};

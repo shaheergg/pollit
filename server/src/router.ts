@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { createPoll, deletePoll, getUserPolls } from "./controllers/poll";
+import {
+  createPoll,
+  deletePoll,
+  getPolls,
+  getUserPolls,
+} from "./controllers/poll";
 import { errorHandler } from "./middlewares/errorHandler";
 import { body } from "express-validator";
 import { castVote, getPollResults } from "./controllers/vote";
@@ -18,6 +23,7 @@ router.post(
   errorHandler,
   createPoll
 );
+router.get("/feed", getPolls);
 router.get("/polls", getUserPolls);
 router.delete("/polls/:id", deletePoll);
 
