@@ -41,7 +41,7 @@ const Poll = ({ poll }) => {
         <CardDescription>{poll?.description}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-2">
-        {poll?.options.map((option, index) => {
+        {poll?.options?.map((option, index) => {
           return (
             <div
               key={index}

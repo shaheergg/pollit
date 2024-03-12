@@ -15,7 +15,7 @@ export const useVoteStore = create((set) => ({
         body: JSON.stringify({ optionId }),
       });
       const data = await res.json();
-      toast("Vote cast successfully", {
+      toast("Vote casted successfully", {
         type: "success",
       });
     } catch (error) {

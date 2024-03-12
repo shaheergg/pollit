@@ -126,16 +126,12 @@ const CreatePoll = ({ trigger }) => {
               ))}
             </div>
           </ScrollArea>
-          <div className="flex items-center justify-end py-2"></div>
-        </div>
-
-        <DialogFooter className={"w-full"}>
-          <DialogClose asChild className="w-full">
+          <div className="flex items-center justify-end py-2">
             <Button onClick={submitForm} disabled={loading} className="w-full">
               {loading ? "Loading..." : "Create Poll"}
             </Button>
-          </DialogClose>
-        </DialogFooter>
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );

@@ -9,7 +9,7 @@ function Polls() {
   const polls = usePollStore((state) => state.polls);
   useEffect(() => {
     getPolls(token);
-  }, [getPolls]);
+  }, [getPolls, token]);
   console.log(polls);
   return (
     <div className="max-w-2xl mx-auto space-y-4">
